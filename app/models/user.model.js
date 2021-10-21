@@ -1,4 +1,5 @@
-const validator = require('validator')
+const validator = require('validator');
+
 module.exports = (mongoose) =>{
   const User = mongoose.model('user', new mongoose.Schema({
     firstName : {
