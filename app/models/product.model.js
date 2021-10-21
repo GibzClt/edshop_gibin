@@ -30,11 +30,11 @@ module.exports = (mongoose)=>{
     },
     updatedAt : {
       type : Date,
-      max : (new Date).getDate()
+      max : (new Date()).getDate()
     },
     createdAt : {
       type : Date,
-      max : (new Date).getDate()
+      max : (new Date()).getDate()
     }
   },
   {timeStamps : true}

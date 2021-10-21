@@ -1,5 +1,13 @@
 module.exports = (mongoose)=>{
   const Order = mongoose.model('order', new mongoose.Schema({
+    amount : {
+      type : Number,
+      required : true
+    },
+    orderDate : {
+      type : Number,
+      required : true
+    },
     address : {
       type : mongoose.Schema.Types.ObjectId,
       ref : "Addresse",
