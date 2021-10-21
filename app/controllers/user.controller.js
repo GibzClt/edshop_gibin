@@ -1,4 +1,7 @@
 const User = require('../models/user.model');
+const jwt = require('jsonwebtoken');
+
+const privateKey = "edshop";
 
 const signup = async (req, res) => {
   try {
@@ -32,5 +35,40 @@ const signup = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({message : "Some error has occured. Please try again"});
+  }
+}
+
+const login = async (req, res) =>{
+  try {
+    const {email, password} = req.body;
+    if(!email || ! password){
+      res.status(400).json({message : "Empty fields"});
+      return;
+    }
+    const userInDb = await User.find({email});
+    if(!userInDb){
+      res.status(401).json({message : "This email has not been registered!"});
+      return;
+    }
+    if(password !== userInDb.password){
+      res.status(401).json({message : "Invalid Credentials!"});
+      return;
+    }
+    const accesstoken = jwt.sign({
+      username : userInDb.username,
+      role : userInDb.role,
+      time : Date.now()
+    },
+    privateKey
+    );
+    res.set('x-auth-token', accesstoken);
+    res.status(200).json({
+      email : userInDb.email,
+      name : `${userInDb.firstName} ${userInDb.lastName}`,
+      isAuthenticated : true
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({message : "Some error has occured, please try again"});
   }
 }
