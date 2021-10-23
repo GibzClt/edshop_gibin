@@ -1,12 +1,16 @@
-const validator = require('validator')
+const validator = require('validator');
+
 module.exports = (mongoose) =>{
   const User = mongoose.model('user', new mongoose.Schema({
-    isAdmin : {
-      type : Boolean,
-      default : false
-    },
-    name : {
+    firstName : {
       type : String,
+    },
+    lastName : {
+      type : String,
+    },
+    userName : {
+      type : String,
+      required : true
     },
     email : {
       type : String,
@@ -17,6 +21,20 @@ module.exports = (mongoose) =>{
     password : {
       type : String,
       required : true
+    },
+    contactNumber : {
+      type : String,
+      required : true
+    },
+    role : {
+      type : String,
+      default : "user"
+    },
+    createdAt : {
+      type : Date,
+    },
+    updatedAt : {
+      type : Date,
     }
   },
   {timeStamps : true}
