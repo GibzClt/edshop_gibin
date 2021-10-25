@@ -1,5 +1,9 @@
 module.exports = (mongoose)=>{
   const Product = mongoose.model('product', new mongoose.Schema({
+    productId : {
+      type : Number,
+      required : true
+    },
     name : {
       type : String,
       required : true
