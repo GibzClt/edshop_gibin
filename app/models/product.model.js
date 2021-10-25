@@ -24,7 +24,7 @@ module.exports = (mongoose)=>{
       type : Number,
       required : true
     },
-    imageURL : {
+    imageUrl : {
       type : String,
       required : true
     },
@@ -33,7 +33,7 @@ module.exports = (mongoose)=>{
       required : true
     }
   },
-  {timeStamps : true}
+  {timestamps : true}
   ));
   return Product;
 };

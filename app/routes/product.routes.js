@@ -7,4 +7,5 @@ module.exports = (app)=>{
   router.get('/products', ProductMW.pagination, Product.searchProducts);
   router.get('/products/categories', Product.getCategories);
   router.get('/products/:id', Product.getProductById);
+  router.post('/products', Product.saveProduct);
 }

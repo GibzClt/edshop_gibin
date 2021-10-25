@@ -29,15 +29,9 @@ module.exports = (mongoose) =>{
     role : {
       type : String,
       default : "user"
-    },
-    createdAt : {
-      type : Date,
-    },
-    updatedAt : {
-      type : Date,
     }
   },
-  {timeStamps : true}
+  {timestamps : true}
   ));
   return User;
 };

@@ -28,7 +28,7 @@ module.exports = (mongoose)=>{
       required : true
     }
   },
-  {timeStamps : true}
+  {timestamps : true}
   ));
   return Order;
 }
