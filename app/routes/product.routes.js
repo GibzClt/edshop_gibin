@@ -6,4 +6,5 @@ module.exports = (app)=>{
   app.use('/api', router);
   router.get('/products', ProductMW.pagination, Product.searchProducts);
   router.get('/products/categories', Product.getCategories);
+  router.get('/products/:id', Product.getProductById);
 }
