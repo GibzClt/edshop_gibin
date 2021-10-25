@@ -27,14 +27,6 @@ module.exports = (mongoose)=>{
     description : {
       type : String,
       required : true
-    },
-    updatedAt : {
-      type : Date,
-      max : (new Date()).getDate()
-    },
-    createdAt : {
-      type : Date,
-      max : (new Date()).getDate()
     }
   },
   {timeStamps : true}
