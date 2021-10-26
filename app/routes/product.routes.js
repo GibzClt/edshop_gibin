@@ -9,4 +9,5 @@ module.exports = (app)=>{
   router.get('/products/categories', Product.getCategories);
   router.get('/products/:id', Product.getProductById);
   router.post('/products', Auth.authenticate, Auth.authorize, Product.saveProduct);
+  router.put('/products/:id', Auth.authenticate, Auth.authorize, Product.updateProduct);
 }
