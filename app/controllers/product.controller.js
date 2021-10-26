@@ -1,7 +1,5 @@
 const Product = require("../models/").product;
 
-const privateKey = "edshop";
-
 const searchProducts =  (req, res) =>{
     res.status(200).json(res.results);
 }
@@ -40,20 +38,7 @@ const getProductById = async (req, res)=>{
   }
 }
 
-const jwt = require('jsonwebtoken');
-
 const saveProduct = async (req, res)=>{
-  const accessToken = req.header('x-auth-token');
-  const user = jwt.verify(accessToken, privateKey);
-  console.log(user);
-  if(!accessToken){
-    res.status(401).json({message : "Please Login first to access this endpoint!"});
-    return;
-  }
-  if(user.role !== "admin"){
-    res.status(403).json({message : "You are not authorized to access this endpoint!"});
-    return;
-  }
   try {
     const {name, availableItems, price, category, description,  imageUrl, manufacturer} = req.body;
     const productId = await Product.find({}).count() + 1;
