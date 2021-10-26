@@ -5,7 +5,7 @@ const privateKey = "edshop";
 
 const signup = async (req, res) => {
   try {
-    const {firstName, lastName, email, contactNumber, password}  = req.body;
+    const {firstName, lastName, email, contactNumber, password, role}  = req.body;
     if(!firstName || !lastName || !email || ! contactNumber || ! password){
       res.status(400).json({message : "Empty field(s)"});
       return;
@@ -33,6 +33,7 @@ const signup = async (req, res) => {
       userName : `${firstName}_${lastName}`,
       email,
       contactNumber,
+      role : role==="admin"?role : "user",
       password : bcryptPassword,
       createdAt : (new Date()).toISOString()
     });
