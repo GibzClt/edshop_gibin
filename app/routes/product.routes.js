@@ -10,4 +10,5 @@ module.exports = (app)=>{
   router.get('/products/:id', Product.getProductById);
   router.post('/products', Auth.authenticate, Auth.authorize, Product.saveProduct);
   router.put('/products/:id', Auth.authenticate, Auth.authorize, Product.updateProduct);
+  router.delete('products/:id', Auth.authenticate, Auth.authorize, Product.deleteProduct);
 }

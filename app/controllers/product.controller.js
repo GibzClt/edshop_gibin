@@ -93,4 +93,26 @@ const updateProduct= async (req, res)=>{
   }
 }
 
-module.exports = {searchProducts, getCategories, getProductById, saveProduct};
+const deleteProduct = async (req, res)=>{
+  const productId = parseInt(req.params.id);
+  try {
+    const product = await Product.findOne({productId});
+    if(!product){
+      res.status(404).json({message : `No Product found for ID - ${productId}!`});
+      return;
+    }
+    try {
+      const deletedProduct = await Product.deleteOne({productId});
+      console.log(deletedProduct);
+      res.status(200).json({message : `Product with ID - ${productId} deleted successfully!`});
+    } catch (err) {
+      console.log(err);
+      res.status(400).json({message : "ERROR !"});
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({message : "Some error occured, please try again"});
+  }
+}
+
+module.exports = {searchProducts, getCategories, getProductById, saveProduct, updateProduct, deleteProduct};
