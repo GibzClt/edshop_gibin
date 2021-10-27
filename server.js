@@ -25,5 +25,6 @@ app.use(express.urlencoded({extended : true}));
 require('./app/routes/user.routes')(app);
 require('./app/routes/address.routes')(app);
 require('./app/routes/product.routes')(app);
+require('./app/routes/order.routes')(app);
 
 app.listen(PORT, ()=>console.log(`Server has started at port ${PORT}`));
