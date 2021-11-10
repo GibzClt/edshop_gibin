@@ -19,7 +19,8 @@ const pagination = async (req, res, next)=>{
       filterQuery.category = category;
     }
     if(name){
-      filterQuery.name = name;
+      let regexPattern = new RegExp(`.*${name}.*`);
+      filterQuery.name = {"$regex" : regexPattern, "$options" : "i"};
     }
     const sortItem = sortBy ? sortBy : "productId";
     
