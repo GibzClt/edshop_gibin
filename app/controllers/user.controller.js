@@ -70,6 +70,7 @@ const login = async (req, res) =>{
     privateKey
     );
     res.set('x-auth-token', accesstoken);
+    res.set("Access-Control-Expose-Headers","x-auth-token")
     res.status(200).json({
       email : userInDb.email,
       name : `${userInDb.firstName} ${userInDb.lastName}`,
