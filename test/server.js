@@ -7,12 +7,60 @@ chai.should();
 chai.use(chaihttp);
 
 describe('API testing', ()=>{
+
+  // testing GET /api/products/:id 
   describe('GET /api/products/:id', ()=>{
-    it(`It should get the product with the given id`, ()=>{
+    it(`it should response status as 200`, (done)=>{
       chai.request(server)
         .get('/api/products/2')
         .end((err, response)=>{
+          response.should.have.status(200);
+          done();
         })
     })
   })
+
+  // testing GET /api/products/categories
+  describe('GET /api/products/categories', ()=>{
+    it(`it should response status as 200`, (done)=>{
+      chai.request(server)
+        .get('/api/products/categories')
+        .end((err, response)=>{
+          response.should.have.status(200);
+          done();
+        })
+    });
+    it(`the response should be an array`, (done)=>{
+      chai.request(server)
+        .get('/api/products/categories')
+        .end((err, response)=>{
+          response.body.should.be.a('array');
+          done();
+        })
+    })
+  })
+
+   // testing GET /api/products
+   describe('GET /api/products', ()=>{
+    it(`it should response status as 200`, (done)=>{
+      chai.request(server)
+        .get('/api/products')
+        .end((err, response)=>{
+          response.should.have.status(200);
+          done();
+        })
+    });
+    it(`the response should be an array`, (done)=>{
+      chai.request(server)
+        .get('/api/products')
+        .end((err, response)=>{
+          response.body.content.should.be.a('array');
+          done();
+        })
+    })
+  })
+
+  
+
+
 })

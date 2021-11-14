@@ -28,3 +28,5 @@ require('./app/routes/product.routes')(app);
 require('./app/routes/order.routes')(app);
 
 app.listen(PORT, ()=>console.log(`Server has started at port ${PORT}`));
+
+module.exports = app;
