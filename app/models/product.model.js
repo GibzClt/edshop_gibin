@@ -24,13 +24,11 @@ module.exports = (mongoose)=>{
       type : Number,
       required : true
     },
-    imageUrl : {
+    imageURL : {
       type : String,
-      required : true
     },
     description : {
       type : String,
-      required : true
     }
   },
   {timestamps : true}

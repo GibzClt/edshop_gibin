@@ -74,7 +74,8 @@ const login = async (req, res) =>{
     res.status(200).json({
       email : userInDb.email,
       name : `${userInDb.firstName} ${userInDb.lastName}`,
-      isAuthenticated : true
+      isAuthenticated : true,
+      isAdmin : userInDb.role === "admin" ? true : false
     });
   } catch (err) {
     console.log(err);

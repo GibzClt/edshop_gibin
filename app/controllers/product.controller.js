@@ -40,7 +40,7 @@ const getProductById = async (req, res)=>{
 
 const saveProduct = async (req, res)=>{
   try {
-    const {name, availableItems, price, category, description,  imageUrl, manufacturer} = req.body;
+    const {name, availableItems, price, category, description,  imageURL, manufacturer} = req.body;
     const productId = await Product.find({}).count() + 1;
     try{
       const product = new Product({
@@ -50,7 +50,7 @@ const saveProduct = async (req, res)=>{
         manufacturer,
         availableItems : parseInt(availableItems),
         price : parseFloat(price),
-        imageUrl,
+        imageURL,
         description
       });
       const newProduct = await product.save();
@@ -69,7 +69,7 @@ const saveProduct = async (req, res)=>{
 
 const updateProduct= async (req, res)=>{
   try {
-    const {name, availableItems, price, category, description, imageUrl, manufacturer} = req.body;
+    const {name, availableItems, price, category, description, imageURL, manufacturer} = req.body;
     const productId = parseInt(req.params.id);
     const product = await Product.findOne({productId});
     if(!product){
@@ -82,7 +82,7 @@ const updateProduct= async (req, res)=>{
       price : parseInt(price),
       category,
       description,
-      imageUrl,
+      imageURL,
       manufacturer
     },
     {new : true});
